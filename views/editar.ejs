@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editar Producto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 1rem;
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #059669;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #047857;
+    }
+  </style>
+</head>
+<body>
+  <main class="form-container">
+    <h1>Editar Producto</h1>
+    <form action="/editar/<%= producto.id %>" method="POST" enctype="multipart/form-data">
+      <label for="nombre">Nombre del producto</label>
+      <input type="text" id="nombre" name="nombre" value="<%= producto.nombre %>" required>
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" required><%= producto.descripcion %></textarea>
+
+      <label>Imagen actual</label>
+      <img src="<%= producto.imagen_url %>" alt="Imagen actual del producto">
+
+      <label for="imagen">Cambiar imagen (opcional)</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*">
+
+      <button type="submit">Actualizar</button>
+    </form>
+  </main>
+</body>
+</html>
